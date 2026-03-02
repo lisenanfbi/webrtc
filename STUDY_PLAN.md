@@ -115,15 +115,17 @@ sequenceDiagram
     
     rect rgb(230, 245, 255)
         Note over A,B: ICE Connectivity Phase
-        A<->B: STUN Binding Requests
-        A<->B: Candidate Pairs Testing
+        A->>B: STUN Binding Request
+        B->>A: STUN Binding Response
+        Note over A,B: Candidate Pairs Testing
     end
     
     rect rgb(255, 245, 230)
         Note over A,B: DTLS Handshake Phase
-        A<->B: ClientHello/ServerHello
-        A<->B: Certificate Exchange
-        A<->B: SRTP Key Derivation
+        A->>B: ClientHello
+        B->>A: ServerHello + Certificate
+        A->>B: ClientKeyExchange
+        Note over A,B: SRTP Key Derived
     end
     
     rect rgb(230, 255, 230)
